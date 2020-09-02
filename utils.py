@@ -5,6 +5,8 @@ from io import BytesIO
 from typing import Dict
 import quotespy.tweet_graphics.tweet_graphics as t
 import quotespy.graphics.graphics as g
+import os
+
 
 def hex_to_rgba(hex_color: str, alpha: float) -> str:
     """Given a hexadecimal color string and a transparency in the 0-1 range, convert it to a rgba color string.
@@ -89,8 +91,24 @@ def render_tweet_info() -> Dict:
     }
 
 
+def choose_font(input_font: str) -> str:
+    """Given the font chosen by the user in the input field, return the path to the .ttf file.
+    """
+    if input_font == "Arial":
+        font_path = os.path.join(os.getcwd(), "arial.ttf")
+    elif input_font == "Inkfree":
+        font_path = os.path.join(os.getcwd(), "Inkfree.ttf")
+    else:
+        font_path = os.path.join(os.getcwd(), "arial.ttf")
+
+    return font_path
+
+
 def render_tweet_graphics_params() -> Dict:
-    font_family = st.selectbox("Font family", ("arial.ttf", "Inkfree.ttf"))
+    font_family_input = st.selectbox("Font family", ("Arial",))
+    # Get the path to the font chosen by the user
+    font_family = choose_font(font_family_input)
+
     font_size_header = int(st.text_input("Font size (header)", "80"))
     font_size_text = int(st.text_input("Font size (text)", "100"))
     graphic_width = int(st.text_input("Graphic width (pixels)", "1800"))
@@ -106,7 +124,8 @@ def render_tweet_graphics_params() -> Dict:
     profile_pic_size = [prof_pic_width, prof_pic_height]
 
     background_color = st.beta_color_picker("Background color", "#000000")
-    transparency = float(st.slider("Background transparency (0 is completely transparent // 1 is completely opaque)", 0.0, 1.0, 1.0))
+    transparency = float(st.slider(
+        "Background transparency (0 is completely transparent // 1 is completely opaque)", 0.0, 1.0, 1.0))
     text_color = st.beta_color_picker("Text color", "#f0f0f0")
     rgba_bg = hex_to_rgba(background_color, transparency)
     color_scheme = [rgba_bg, text_color]
@@ -139,14 +158,18 @@ def render_graphic_info() -> Dict:
 
 
 def render_graphics_params() -> Dict:
-    font_family = st.selectbox("Font family", ("arial.ttf", "Inkfree.ttf"))
+    font_family_input = st.selectbox(
+        "Font family", ("Arial", "Inkfree"))
+    # Get the path to the font chosen by the user
+    font_family = choose_font(font_family_input)
     font_size_header = int(st.text_input("Font size", "250"))
     graphic_width = int(st.text_input("Graphic width (pixels)", "1920"))
     graphic_height = int(st.text_input("Graphic height (pixels)", "1080"))
     size = [graphic_width, graphic_height]
 
     background_color = st.beta_color_picker("Background color", "#060F56")
-    transparency = float(st.slider("Background transparency (0 is completely transparent // 1 is completely opaque)", 0.0, 1.0, 1.0))
+    transparency = float(st.slider(
+        "Background transparency (0 is completely transparent // 1 is completely opaque)", 0.0, 1.0, 1.0))
     text_color = st.beta_color_picker("Text color", "#D4BF2D")
     rgba_bg = hex_to_rgba(background_color, transparency)
     color_scheme = [rgba_bg, text_color]
@@ -164,6 +187,7 @@ def render_graphics_params() -> Dict:
         "wrap_limit": wrap_limit,
         "margin_bottom": margin_bottom
     }
+
 
 def create_graphic(module: str, info: Dict, g_settings: Dict) -> str:
 
@@ -186,5 +210,5 @@ def create_graphic(module: str, info: Dict, g_settings: Dict) -> str:
         except ValueError:
             st.write(
                 "There was a problem with your profile picture image. Please upload another image.")
-    
+
     return graphic_name

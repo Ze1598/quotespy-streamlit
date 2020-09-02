@@ -1,9 +1,9 @@
+import os
 import base64
 import utils
 from PIL import Image
 import streamlit as st
 st.set_option("deprecation.showfileUploaderEncoding", False)
-import os
 
 st.markdown("""
 # quotespy live demo
@@ -56,4 +56,3 @@ href = f'<a href="data:image/png;base64,{encoded_img}" download="{graphic_name}"
 st.markdown(href, unsafe_allow_html=True)
 # Delete the graphic from the server
 os.remove(graphic_name)
-

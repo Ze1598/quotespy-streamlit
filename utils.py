@@ -95,11 +95,11 @@ def choose_font(input_font: str) -> str:
     """Given the font chosen by the user in the input field, return the path to the .ttf file.
     """
     if input_font == "Arial":
-        font_path = os.path.join(os.getcwd(), "arial.ttf")
+        font_path = os.path.join("static", "fonts", "arial.ttf")
     elif input_font == "Inkfree":
-        font_path = os.path.join(os.getcwd(), "Inkfree.ttf")
+        font_path = os.path.join("static", "fonts", "Inkfree.ttf")
     else:
-        font_path = os.path.join(os.getcwd(), "arial.ttf")
+        font_path = os.path.join("static", "fonts", "arial.ttf")
 
     return font_path
 

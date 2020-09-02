@@ -10,7 +10,7 @@ st.markdown("""
 
 [quotespy](https://pypi.org/project/quotespy/) is a Python library developed by José Fernando Costa to create quotes/lyrics and tweet graphics, based on the [Pillow](https://pypi.org/project/Pillow/) library.
 
-The library is open-source and you can find the code on [GitHub](https://github.com/Ze1598/quotespy). The code for this web app is equally available on GitHub [here]().
+The library is open-source and you can find the code on [GitHub](https://github.com/Ze1598/quotespy). The code for this web app is equally available on GitHub [here](https://github.com/Ze1598/quotespy-streamlit).
 
 In this demo you're able to create graphics using both modules of quotespy: *tweet_graphics* and *graphics*. 
 
@@ -35,7 +35,7 @@ if module_chosen == "tweet_graphics":
     # If the user uploaded a profile picture, delete it from the server\
     # after creating the graphic
     user_pic = tweet_info["user_pic"]
-    if user_pic != None:
+    if user_pic != "":
         os.remove("profile_picture.png")
 
 elif module_chosen == "graphics":
@@ -56,3 +56,4 @@ href = f'<a href="data:image/png;base64,{encoded_img}" download="{graphic_name}"
 st.markdown(href, unsafe_allow_html=True)
 # Delete the graphic from the server
 os.remove(graphic_name)
+

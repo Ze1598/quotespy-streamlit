@@ -3,6 +3,7 @@ import utils
 from PIL import Image
 import streamlit as st
 st.set_option("deprecation.showfileUploaderEncoding", False)
+import os
 
 st.markdown("""
 # quotespy live demo
@@ -31,6 +32,11 @@ if module_chosen == "tweet_graphics":
     tweet_info = utils.render_tweet_info()
     graphic_settings = utils.render_tweet_graphics_params()
     graphic_name = utils.create_graphic("t", tweet_info, graphic_settings)
+    # If the user uploaded a profile picture, delete it from the server\
+    # after creating the graphic
+    user_pic = tweet_info["user_pic"]
+    if user_pic != None:
+        os.remove("profile_picture.png")
 
 elif module_chosen == "graphics":
     graphic_info = utils.render_graphic_info()
@@ -48,3 +54,5 @@ st.image(graphic_name, use_column_width=True)
 encoded_img = utils.encode_img_to_b64(graphic_name)
 href = f'<a href="data:image/png;base64,{encoded_img}" download="{graphic_name}">Download the graphic</a>'
 st.markdown(href, unsafe_allow_html=True)
+# Delete the graphic from the server
+os.remove(graphic_name)

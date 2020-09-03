@@ -29,14 +29,12 @@ def hex_to_rgba(hex_color: str, alpha: float) -> str:
 def encode_img_to_b64(img_name: str) -> bytes:
     """Given the name of a image file, load it in bytes mode, and convert it to a base 64 bytes object.
     """
+    # https://discuss.streamlit.io/t/how-to-download-file-in-streamlit/1806/19
     with open(img_name, "rb") as f:
         img = f.read()
         encoded_img = base64.b64encode(img).decode()
 
     return encoded_img
-    # img = Image.open(img_name)
-    # buffered = BytesIO()
-    # img.save()
 
 
 def validate_user_tag(user_tag: str) -> str:

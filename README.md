@@ -6,7 +6,9 @@ A live demo of the quotespy Python library.
 
 This app was developed using [streamlit](https://docs.streamlit.io/en/stable/). As described in the documentation, "Streamlit is an open-source Python library that makes it easy to build beautiful custom web-apps for machine learning and data science".
 
-The app is deployed on Heroku, available [here](https://quotespy-streamlit.herokuapp.com/). With it, you can create quotespy graphics on the web. In other words, you can create graphics similar to tweet screenshots and "free-form" graphics with centered text using the two modules available.
+The app is deployed on Streamlit for Teams, available [here](https://s4a.streamlit.io/ze1598/quotespy-streamlit/master/streamlit_app.py/+/). With it, you can create quotespy graphics on the web. In other words, you can create graphics similar to tweet screenshots and "free-form" graphics with centered text using the two modules available.
+
+You can also find the app, deployed on Heroku, [here](https://quotespy-streamlit.herokuapp.com/).
 
 Lastly, a brief explanation of the files included in the repository:
 

@@ -14,7 +14,7 @@ Lastly, a brief explanation of the files included in the repository:
 
 * Procfile: ["Heroku apps include a Procfile that specifies the commands that are executed by the app on startup"](https://devcenter.heroku.com/articles/procfile)
 
-* streamlit_app.py: Main script to manage the streamlit app
+* streamlit_app.py/main.py: Main script to manage the streamlit app (the same file exists under two names because of the naming conventions required for deployment in Streamlit for Teams and Heroku, respectively)
 
 * requirements.txt: Text file with the application's dependencies (tip: it can be generated in your pipenv virtual environment using the command `pipenv lock -r > requirements.txt`)
 

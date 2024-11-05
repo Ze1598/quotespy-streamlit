@@ -121,10 +121,10 @@ def render_tweet_graphics_params() -> Dict:
         "Profile picture height for the graphic (pixels)", "0"))
     profile_pic_size = [prof_pic_width, prof_pic_height]
 
-    background_color = st.beta_color_picker("Background color", "#000000")
+    background_color = st.color_picker("Background color", "#000000")
     transparency = float(st.slider(
         "Background transparency (0 is completely transparent // 1 is completely opaque)", 0.0, 1.0, 1.0))
-    text_color = st.beta_color_picker("Text color", "#f0f0f0")
+    text_color = st.color_picker("Text color", "#f0f0f0")
     rgba_bg = hex_to_rgba(background_color, transparency)
     color_scheme = [rgba_bg, text_color]
 
@@ -165,10 +165,10 @@ def render_graphics_params() -> Dict:
     graphic_height = int(st.text_input("Graphic height (pixels)", "1080"))
     size = [graphic_width, graphic_height]
 
-    background_color = st.beta_color_picker("Background color", "#060F56")
+    background_color = st.color_picker("Background color", "#060F56")
     transparency = float(st.slider(
         "Background transparency (0 is completely transparent // 1 is completely opaque)", 0.0, 1.0, 1.0))
-    text_color = st.beta_color_picker("Text color", "#D4BF2D")
+    text_color = st.color_picker("Text color", "#D4BF2D")
     rgba_bg = hex_to_rgba(background_color, transparency)
     color_scheme = [rgba_bg, text_color]
 

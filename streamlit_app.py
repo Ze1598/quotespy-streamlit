@@ -3,7 +3,7 @@ import base64
 import utils
 from PIL import Image
 import streamlit as st
-st.set_option("deprecation.showfileUploaderEncoding", False)
+# st.set_option("deprecation.showfileUploaderEncoding", False)
 
 st.markdown("""
 # quotespy live demo
